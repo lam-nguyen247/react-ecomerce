@@ -1,4 +1,3 @@
-import React from "react";
 import { Col, Container, Nav, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import pageSvg from "../assets/svg/server_down.svg";
