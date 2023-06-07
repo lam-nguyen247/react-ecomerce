@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import userAvatar from "../assets/img/img1.jpg";
-import Notification from "../data/Notification.js";
+import Notification from "../data/Notification";
 
 export default function Header({ onSkin: any }) {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
