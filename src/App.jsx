@@ -11,7 +11,7 @@ import "./scss/style.scss";
 // set skin on load
 window.addEventListener("load", function () {
   let skinMode = localStorage.getItem("skin-mode");
-  let HTMLTag: HTMLElement | null = document.querySelector("html");
+  let HTMLTag = document.querySelector("html");
 
   if (skinMode) {
     HTMLTag?.setAttribute("data-skin", skinMode);

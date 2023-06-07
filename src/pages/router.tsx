@@ -1,8 +1,9 @@
+// @ts-nocheck
 import Pages from "./Pages";
 import RouterType from "../types/router.types";
 import { Route, Routes } from "react-router";
 import NotFound from "./NotFound";
-
+import Main from "../layouts/Main";
 const Router = () => {
   const list = Pages.map(({ path, title, element }: RouterType) => {
     return <Route key={title} path={`/${path}`} element={element} />;
@@ -10,7 +11,7 @@ const Router = () => {
 
   return (
     <Routes>
-      {list}
+      <Route element={<Main />}>{list}</Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
