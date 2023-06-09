@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import userAvatar from "../assets/img/img1.jpg";
-import {
-  dashboardMenu,
-  applicationsMenu,
-  pagesMenu,
-  uiElementsMenu,
-} from "../data/Menu";
+import { dashboardMenu } from "../data/Menu/Dashboard";
+import { postMenu } from "../data/Menu/Post";
 
 export default class Sidebar extends Component {
   toggleFooterMenu = (e) => {
@@ -22,7 +18,7 @@ export default class Sidebar extends Component {
       <div className="sidebar">
         <div className="sidebar-header">
           <Link to="/" className="sidebar-logo">
-            dashbyte
+            Lam.nguyen247
           </Link>
         </div>
         <PerfectScrollbar
@@ -37,7 +33,7 @@ export default class Sidebar extends Component {
             </div>
             <div className="sidebar-footer-body">
               <h6>
-                <Link to="../pages/profile.html">Shaira Diaz</Link>
+                <Link to="../pages/profile.html">Admin</Link>
               </h6>
               <p>Premium Member</p>
             </div>
@@ -151,21 +147,9 @@ class SidebarMenu extends Component {
         </div>
         <div className="nav-group show">
           <div className="nav-label" onClick={this.toggleMenu}>
-            Applications
+            Posts
           </div>
-          {this.populateMenu(applicationsMenu)}
-        </div>
-        <div className="nav-group show">
-          <div className="nav-label" onClick={this.toggleMenu}>
-            Pages
-          </div>
-          {this.populateMenu(pagesMenu)}
-        </div>
-        <div className="nav-group show">
-          <div className="nav-label" onClick={this.toggleMenu}>
-            UI Elements
-          </div>
-          {this.populateMenu(uiElementsMenu)}
+          {this.populateMenu(postMenu)}
         </div>
       </React.Fragment>
     );

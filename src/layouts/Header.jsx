@@ -1,10 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import userAvatar from "../assets/img/img1.jpg";
 import Notification from "../data/Notification";
 
-export default function Header({ onSkin: any }) {
+export default function Header() {
+  ///// Skin Switch /////
+  const currentSkin = localStorage.getItem("skin-mode") ? "dark" : "";
+  const [skin, setSkin] = useState(currentSkin);
+
+  const switchSkin = (skin) => {
+    if (skin === "dark") {
+      const btnWhite = document.getElementsByClassName("btn-white");
+
+      for (const btn of btnWhite) {
+        btn.classList.add("btn-outline-primary");
+        btn.classList.remove("btn-white");
+      }
+    } else {
+      const btnOutlinePrimary = document.getElementsByClassName(
+        "btn-outline-primary"
+      );
+
+      for (const btn of btnOutlinePrimary) {
+        btn.classList.remove("btn-outline-primary");
+        btn.classList.add("btn-white");
+      }
+    }
+  };
+
+  switchSkin(skin);
+
+  useEffect(() => {
+    switchSkin(skin);
+  }, [skin]);
+
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <Link
       to=""
@@ -69,12 +99,12 @@ export default function Header({ onSkin: any }) {
       HTMLTag?.setAttribute("data-skin", skin);
       localStorage.setItem("skin-mode", skin);
 
-      onSkin(skin);
+      setSkin(skin);
     } else {
       HTMLTag?.removeAttribute("data-skin");
       localStorage.removeItem("skin-mode");
 
-      onSkin("");
+      setSkin("");
     }
   };
 
